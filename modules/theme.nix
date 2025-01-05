@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) types mkOption;
 in {
-  options.niksvim.flavor = mkOption {
+  options.programs.niksvim.flavor = mkOption {
     type = types.enum [
       "latte"
       "frappe"

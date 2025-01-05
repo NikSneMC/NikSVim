@@ -34,12 +34,24 @@
     };
   };
 
-  outputs = _: {
-    modules = rec {
-      default = config // theme;
-      config = import ./config;
-      theme = import ./modules/theme.nix;
-      # options = import ./modules/options.nix; # WIP
+  outputs = inputs: let
+    theme = import ./modules/theme.nix;
+    config = import ./config;
+    mkModules = env: let
+      mkConfig = cfg:
+        config ({
+            inherit env;
+            nixvim = inputs.nixvim."${env}Modules".default;
+          }
+          // cfg);
+    in {
+      default = mkConfig {inherit theme;};
+      config = mkConfig {};
+      inherit theme;
     };
+  in {
+    nixosModules = mkModules "nixos";
+    homeManagerModules = mkModules "homeManager";
+    nixDarwinModules = mkModules "nixDarwin";
   };
 }
