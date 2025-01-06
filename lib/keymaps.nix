@@ -29,18 +29,5 @@
       })
     keymaps));
 in {
-  programs.nixvim.keymaps =
-    (mkKeymaps {
-      # neo-tree
-      "<C-n>" = "<cmd>Neotree toggle<CR>";
-      "<leader>e" = "<cmd>Neotree focus<CR>";
-      # neogit
-      "<leader>go" = "<cmd>Neogit<CR>";
-    })
-    ++ (mkDisabledKeymaps "inv" [
-      "<Up>"
-      "<Down>"
-      "<Left>"
-      "<Right>"
-    ]);
+  inherit mkKeymaps mkDisabledKeymaps;
 }

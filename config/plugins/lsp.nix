@@ -1,6 +1,4 @@
-{lib, ...}: let
-  niksvimLib = import ../../lib {inherit lib;};
-in {
+{niksvimLib, ...}: {
   programs.nixvim.plugins = {
     lsp = {
       enable = true;
@@ -37,7 +35,7 @@ in {
         // {
           nil_ls = {
             enable = true;
-            settings.formatting.command = ["alejandra"];
+            settings.formatting.command = ["nix fmt"];
           };
         };
     };

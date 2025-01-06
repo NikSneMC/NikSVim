@@ -4,6 +4,7 @@
   theme ? {},
   ...
 }: {
+  options,
   config,
   lib,
   ...
@@ -11,8 +12,9 @@
   imports = [
     nixvim
     theme
-    (import ../modules/options.nix)
-    ./binds.nix
+    ../lib
+    (import ../modules/options.nix env)
+    ./binds
     ./plugins
   ];
 

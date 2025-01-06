@@ -2,7 +2,7 @@
   programs.nixvim.plugins.lualine = {
     enable = true;
     settings = {
-      globalstatus = true;
+      # globalstatus = true;
       theme = "catppuccin";
       sections = let
         mkLocationComponent = type:

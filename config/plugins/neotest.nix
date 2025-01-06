@@ -1,6 +1,4 @@
-{lib, ...}: let
-  niksvimLib = import ../../lib {inherit lib;};
-in {
+{niksvimLib, ...}: {
   programs.nixvim.plugins.neotest = {
     enable = true;
     adapters = niksvimLib.mkServersList [

@@ -34,24 +34,42 @@
     };
   };
 
-  outputs = inputs: let
-    theme = import ./modules/theme.nix;
-    config = import ./config;
-    mkModules = env: let
-      mkConfig = cfg:
-        config ({
-            inherit env;
-            nixvim = inputs.nixvim."${env}Modules".default;
-          }
-          // cfg);
-    in {
-      default = mkConfig {inherit theme;};
-      config = mkConfig {};
-      inherit theme;
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+
+      perSystem = {
+        pkgs,
+        system,
+        ...
+      }: {
+        formatter = pkgs.alejandra;
+      };
+
+      flake = let
+        theme = import ./modules/theme.nix;
+        config = import ./config;
+        mkModules = env: let
+          mkConfig = cfg:
+            config ({
+                inherit env;
+                nixvim = inputs.nixvim."${env}Modules".default;
+              }
+              // cfg);
+        in {
+          default = mkConfig {inherit theme;};
+          config = mkConfig {};
+          inherit theme;
+        };
+      in {
+        nixosModules = mkModules "nixos";
+        homeManagerModules = mkModules "homeManager";
+        nixDarwinModules = mkModules "nixDarwin";
+      };
     };
-  in {
-    nixosModules = mkModules "nixos";
-    homeManagerModules = mkModules "homeManager";
-    nixDarwinModules = mkModules "nixDarwin";
-  };
 }
