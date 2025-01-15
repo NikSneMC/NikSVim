@@ -29,6 +29,7 @@
           "sqls"
           "svelte"
           "tailwindcss"
+          "volar"
           "yamlls"
           "zls"
         ])
