@@ -38,15 +38,16 @@
             enable = true;
             settings.formatting.command = ["nix fmt"];
           };
+
+          rust_analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+            installRustfmt = true;
+          };
         };
     };
     clangd-extensions.enable = true;
-    rustaceanvim = {
-      enable = true;
-      settings.server = {
-        load_vscode_settings = true;
-      };
-    };
     typescript-tools.enable = true;
     lsp-format.enable = true;
     lsp-lines.enable = true;
