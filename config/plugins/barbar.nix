@@ -9,7 +9,7 @@
       last.key = "<A-0>";
     };
 in {
-  programs.nixvim.plugins.barbar = {
+  plugins.barbar = {
     enable = true;
     settings.auto_hide = 1;
     keymaps =

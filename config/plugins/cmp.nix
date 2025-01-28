@@ -3,7 +3,7 @@ let
     name = source;
   });
 in {
-  programs.nixvim.plugins = {
+  plugins = {
     cmp = {
       enable = true;
       autoEnableSources = true;

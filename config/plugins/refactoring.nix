@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.refactoring = {
+  plugins.refactoring = {
     enable = true;
     enableTelescope = true;
   };

@@ -1,5 +1,5 @@
 {niksvimLib, ...}: {
-  programs.nixvim.plugins.neotest = {
+  plugins.neotest = {
     enable = true;
     adapters = niksvimLib.mkServersList [
       "bash"

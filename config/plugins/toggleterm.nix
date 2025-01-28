@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.toggleterm = {
+  plugins.toggleterm = {
     enable = true;
     settings = {
       open_mapping = "[[<C-t>]]";

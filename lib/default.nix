@@ -1,4 +1,9 @@
-{config, lib, pkgs, ...}: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   args = {inherit config lib pkgs;};
   keymaps = import ./keymaps.nix args;
   plugins = import ./plugins.nix args;

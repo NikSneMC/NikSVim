@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.dashboard = {
+  plugins.dashboard = {
     enable = true;
     settings = {
       change_to_vcs_root = true;

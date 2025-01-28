@@ -1,4 +1,12 @@
-{niksvimLib, ...}: {
+{niksvimLib, ...}: let
+  extraPlugins = {
+    neotree-file-nesting-config = {
+      owner = "saifulapm";
+      rev = "d9168eed2522397d271624e5f523d8384a552a64";
+      hash = "sha256-qaB60iMLkuN5N9gnAJ2QHFmimlxTnBNlNqv6Zfb3aHg=";
+    };
+  };
+in {
   imports = [
     ./barbar.nix
     ./cmp.nix
@@ -21,40 +29,30 @@
     ./which-key.nix
   ];
 
-  programs.nixvim = let
-    extraPlugins = {
-      neotree-file-nesting-config = {
-        owner = "saifulapm";
-        rev = "d9168eed2522397d271624e5f523d8384a552a64";
-        hash = "sha256-qaB60iMLkuN5N9gnAJ2QHFmimlxTnBNlNqv6Zfb3aHg=";
-      };
-    };
-  in {
-    plugins = niksvimLib.mkPluginsList [
-      "comment"
-      "direnv"
-      "emmet"
-      "friendly-snippets"
-      "git-conflict"
-      "gitblame"
-      "gitlinker"
-      "gitmessenger"
-      "gitsigns"
-      "luasnip"
-      "markdown-preview"
-      "nix"
-      "nix-develop"
-      "nvim-autopairs"
-      "nvim-surround"
-      "rainbow-delimiters"
-      "rest"
-      "todo-comments"
-      "ts-autotag"
-      "wakatime"
-      "web-devicons"
-    ];
-    extraPlugins = niksvimLib.mkExtraPluginsList extraPlugins;
+  plugins = niksvimLib.mkPluginsList [
+    "comment"
+    "direnv"
+    "emmet"
+    "friendly-snippets"
+    "git-conflict"
+    "gitblame"
+    "gitlinker"
+    "gitmessenger"
+    "gitsigns"
+    "luasnip"
+    "markdown-preview"
+    "nix"
+    "nix-develop"
+    "nvim-autopairs"
+    "nvim-surround"
+    "rainbow-delimiters"
+    "rest"
+    "todo-comments"
+    "ts-autotag"
+    "wakatime"
+    "web-devicons"
+  ];
+  extraPlugins = niksvimLib.mkExtraPluginsList extraPlugins;
 
-    extraConfigLua = niksvimLib.mkExtraPluginsLua extraPlugins;
-  };
+  extraConfigLua = niksvimLib.mkExtraPluginsLua extraPlugins;
 }

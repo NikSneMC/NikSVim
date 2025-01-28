@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.project-nvim = {
+  plugins.project-nvim = {
     enable = true;
     enableTelescope = true;
   };

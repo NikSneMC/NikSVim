@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.neocord = {
+  plugins.neocord = {
     enable = true;
     settings = {
       client_id = "1251330515147948083";
