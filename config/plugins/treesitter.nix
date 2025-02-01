@@ -2,10 +2,7 @@
   plugins.treesitter = {
     enable = true;
     package = pkgs.vimPlugins.nvim-treesitter;
-    settings = {
-      auto_install = true;
-      highlight.enable = true;
-    };
+    settings.highlight.enable = true;
   };
   filetype.pattern = {
     ".*/hypr/hypr.*%.conf" = "hyprlang";
