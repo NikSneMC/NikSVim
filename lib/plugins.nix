@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -44,7 +43,7 @@
           setup ? name,
           settings ? {},
           ...
-        }: "require('${setup}').setup(${config.lib.nixvim.toLuaObject settings})"
+        }: "require('${setup}').setup(${lib.nixvim.toLuaObject settings})"
       ))
       (builtins.concatStringsSep "\n")
     ];

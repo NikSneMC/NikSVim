@@ -45,15 +45,10 @@ in {
           "nerdfont"
           "greek"
           "latex_symbols"
-          "codeium"
         ];
       };
     };
     cmp-conventionalcommits.enable = true;
     cmp-nixpkgs-maintainers.enable = true;
-    codeium-nvim = {
-      enable = true;
-      settings.enable_chat = true;
-    };
   };
 }

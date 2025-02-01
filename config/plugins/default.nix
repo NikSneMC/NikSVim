@@ -8,8 +8,8 @@
   };
 in {
   imports = [
+    ./cmp
     ./barbar.nix
-    ./cmp.nix
     ./colorizer.nix
     ./dap.nix
     ./dashboard.nix

@@ -1,8 +1,24 @@
 {
-  description = "NikSne's NixVim configuration";
+  description = "A nixvim configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
@@ -11,17 +27,16 @@
         nuschtosSearch.follows = "";
         home-manager.follows = "";
         nix-darwin.follows = "";
-        devshell.follows = "";
-        treefmt-nix.follows = "";
-        flake-compat.follows = "";
-        git-hooks.follows = "";
+        devshell.follows = "devshell";
+        flake-compat.follows = "flake-compat";
+        git-hooks.follows = "git-hooks";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
-    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs = {
-    nixvim,
+    self,
     flake-parts,
     ...
   } @ inputs:
@@ -33,26 +48,42 @@
         "aarch64-darwin"
       ];
 
+      imports = [
+        inputs.nixvim.flakeModules.default
+      ];
+
+      nixvim = {
+        packages.enable = true;
+        checks.enable = true;
+      };
+
+      flake.nixvimModules = {
+        default = ./config;
+        codeium = ./config/plugins/cmp/codeium.nix;
+      };
+
       perSystem = {
-        pkgs,
         system,
+        pkgs,
         ...
-      }: let
-        nixvimLib = nixvim.lib.${system};
-        nixvim' = nixvim.legacyPackages.${system};
-        nixvimModule = {
-          inherit pkgs;
-          module = import ./config;
-        };
-        nvim = nixvim'.makeNixvimWithModule nixvimModule;
-      in {
-        checks = {
-          default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
-        };
-
-        packages.default = nvim;
-
+      }: {
         formatter = pkgs.alejandra;
+
+        nixvimConfigurations = let
+          mkNikSVimConfig = modules:
+            inputs.nixvim.lib.evalNixvim {
+              inherit system modules;
+            };
+        in
+          with self.nixvimModules; {
+            default = mkNikSVimConfig [
+              default
+            ];
+            with-codeium = mkNikSVimConfig [
+              default
+              codeium
+            ];
+          };
       };
     };
 }
