@@ -15,7 +15,6 @@
           "elixirls"
           "eslint"
           "gopls"
-          "graphql"
           "html"
           "htmx"
           "jdtls"
