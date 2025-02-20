@@ -35,7 +35,7 @@
         // {
           nil_ls = {
             enable = true;
-            settings.formatting.command = ["nix fmt"];
+            settings.formatting.command = ["nix" "fmt" "--offline" "--" "-"];
           };
 
           rust_analyzer = {
