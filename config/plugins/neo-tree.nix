@@ -9,7 +9,6 @@
   };
 
   keymaps = niksvimLib.mkKeymaps {
-    # neo-tree
     "<C-n>" = "<cmd>Neotree toggle<CR>";
     "<leader>e" = "<cmd>Neotree focus<CR>";
   };

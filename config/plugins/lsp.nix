@@ -61,4 +61,9 @@
       };
     };
   };
+
+  keymaps = niksvimLib.mkKeymaps {
+    "<leader>lca" = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+    "<leader>lr" = "<cmd>lua vim.lsp.buf.rename()<CR>";
+  };
 }
