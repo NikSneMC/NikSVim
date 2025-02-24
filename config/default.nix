@@ -8,10 +8,7 @@
   viAlias = true;
   vimAlias = true;
 
-  clipboard = {
-    register = "unnamedplus";
-    providers.wl-copy.enable = true;
-  };
+  clipboard.providers.wl-copy.enable = true;
 
   opts = {
     ignorecase = true;
