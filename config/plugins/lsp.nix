@@ -53,6 +53,10 @@
             installCargo = true;
             installRustc = true;
             installRustfmt = true;
+            settings = {
+              completion.callable.snippets = "add_parentheses";
+              diagnostics.styleLints.enable = true;
+            };
           };
         };
     };
