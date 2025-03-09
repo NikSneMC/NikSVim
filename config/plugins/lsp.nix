@@ -50,9 +50,9 @@
 
           rust_analyzer = {
             enable = true;
-            installCargo = true;
-            installRustc = true;
-            installRustfmt = true;
+            installCargo = false;
+            installRustc = false;
+            installRustfmt = false;
             settings = {
               completion.callable.snippets = "add_parentheses";
               diagnostics.styleLints.enable = true;
