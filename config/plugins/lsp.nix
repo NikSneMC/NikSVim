@@ -54,6 +54,7 @@
             installRustc = false;
             installRustfmt = false;
             settings = {
+              check.command = "clippy";
               completion.callable.snippets = "add_parentheses";
               diagnostics.styleLints.enable = true;
             };
