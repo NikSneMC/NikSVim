@@ -49,6 +49,7 @@ in {
     "rest"
     "todo-comments"
     "ts-autotag"
+    "vimtex"
     "wakatime"
     "web-devicons"
   ];
