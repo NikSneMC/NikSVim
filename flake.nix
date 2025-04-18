@@ -39,7 +39,7 @@
 
       flake.nixvimModules = {
         default = ./config;
-        codeium = ./config/plugins/cmp/codeium.nix;
+        windsurf = ./config/plugins/cmp/windsurf.nix;
       };
 
       perSystem = {
@@ -61,7 +61,7 @@
             ];
             with-codeium = mkNikSVimConfig [
               default
-              codeium
+              windsurf
             ];
           };
       };

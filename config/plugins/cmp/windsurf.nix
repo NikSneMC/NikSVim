@@ -1,9 +1,9 @@
 {
   plugins = {
-    codeium-nvim = {
+    windsurf-nvim = {
       enable = true;
       settings.enable_chat = true;
     };
-    cmp.settings.sources = [{name = "codeium";}];
+    cmp.settings.sources = [{name = "windsurf";}];
   };
 }
