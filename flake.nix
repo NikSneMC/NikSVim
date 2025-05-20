@@ -3,14 +3,31 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    systems.url = "github:nix-systems/default";
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    flake-utils.url = "github:numtide/flake-utils";
 
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
         flake-parts.follows = "flake-parts";
         nuschtosSearch.follows = "";
+      };
+    };
+
+    nil = {
+      url = "github:oxalica/nil";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
       };
     };
   };
@@ -53,6 +70,9 @@
           mkNikSVimConfig = modules:
             inputs.nixvim.lib.evalNixvim {
               inherit system modules;
+              extraSpecialArgs = {
+                inherit inputs self;
+              };
             };
         in
           with self.nixvimModules; {

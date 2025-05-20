@@ -3,7 +3,7 @@
     enable = true;
     filesystem = {
       filteredItems.visible = true;
-      followCurrentFile.enabled = true;
+      followCurrentFile.enabled = false;
     };
     nestingRules.__raw = "require('neotree-file-nesting-config').nesting_rules";
   };

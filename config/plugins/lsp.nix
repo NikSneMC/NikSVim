@@ -1,4 +1,9 @@
-{niksvimLib, ...}: {
+{
+  inputs,
+  niksvimLib,
+  pkgs,
+  ...
+}: {
   plugins = {
     lsp = {
       enable = true;
@@ -45,6 +50,7 @@
         // {
           nil_ls = {
             enable = true;
+            package = inputs.nil.packages.${pkgs.system}.nil;
             settings.formatting.command = ["nix" "fmt" "--offline" "--" "-"];
           };
 
