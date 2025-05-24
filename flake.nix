@@ -9,7 +9,10 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
 
     systems.url = "github:nix-systems/default";
 
@@ -19,7 +22,7 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         flake-utils.follows = "flake-utils";
-        systems.url = "systems";
+        systems.follows = "systems";
       };
     };
   };
