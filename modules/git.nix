@@ -4,7 +4,7 @@
     gitlinker-nvim.enable = true;
     gitsigns = {
       enable = true;
-      codeActions.enable = true;
+      codeActions.enable = false;
     };
     vim-fugitive.enable = true;
   };
