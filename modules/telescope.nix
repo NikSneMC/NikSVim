@@ -1,0 +1,5 @@
+{
+  vim.telescope = {
+    enable = true;
+  };
+}
