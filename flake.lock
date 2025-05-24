@@ -38,12 +38,29 @@
         "type": "github"
       }
     },
+    "mnw": {
+      "locked": {
+        "lastModified": 1747499976,
+        "narHash": "sha256-YTiSI4WLbk0CleXeBheYmKZV6iqKyBpyoh1e+vcQzu4=",
+        "owner": "Gerg-L",
+        "repo": "mnw",
+        "rev": "72433a144c4ac16931e9148f78db4a0e4c147441",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gerg-L",
+        "repo": "mnw",
+        "type": "github"
+      }
+    },
     "nil": {
       "inputs": {
         "flake-utils": [
+          "nvf",
           "flake-utils"
         ],
         "nixpkgs": [
+          "nvf",
           "nixpkgs"
         ],
         "rust-overlay": "rust-overlay"
@@ -78,30 +95,32 @@
         "type": "github"
       }
     },
-    "nixvim": {
+    "nvf": {
       "inputs": {
         "flake-parts": [
           "flake-parts"
         ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "mnw": "mnw",
+        "nil": "nil",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nuschtosSearch": [],
-        "systems": [
-          "systems"
-        ]
+        "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1747743401,
-        "narHash": "sha256-AXk6mf9ySe44faNUGhD1mZud/kB7X+Nipzo2YxHet4s=",
-        "owner": "nix-community",
-        "repo": "nixvim",
-        "rev": "47dba84e0d068a2b8c07faa0ec737ea98a226537",
+        "lastModified": 1747525582,
+        "narHash": "sha256-oEZ6DV4bPcNZIuwW5Kcd+/zT3PMkXse2kX/3jHoomGk=",
+        "owner": "NotAShelf",
+        "repo": "nvf",
+        "rev": "d3a0e7029ac57eef1120225973247851c5b967b5",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "nixvim",
+        "owner": "NotAShelf",
+        "repo": "nvf",
         "type": "github"
       }
     },
@@ -109,15 +128,15 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
-        "nil": "nil",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim",
-        "systems": "systems_2"
+        "nvf": "nvf",
+        "systems": "systems_3"
       }
     },
     "rust-overlay": {
       "inputs": {
         "nixpkgs": [
+          "nvf",
           "nil",
           "nixpkgs"
         ]
@@ -152,6 +171,19 @@
       }
     },
     "systems_2": {
+      "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "path": "/nix/store/ka839ivm6bhhwwfq7sf1d9abwc462dqq-source",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "path"
+      },
+      "original": {
+        "id": "systems",
+        "type": "indirect"
+      }
+    },
+    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

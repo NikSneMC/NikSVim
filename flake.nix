@@ -1,10 +1,8 @@
 {
-  description = "A nixvim configuration";
+  description = "NikSne's nvf configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    systems.url = "github:nix-systems/default";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -13,21 +11,15 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        flake-parts.follows = "flake-parts";
-        nuschtosSearch.follows = "";
-      };
-    };
+    systems.url = "github:nix-systems/default";
 
-    nil = {
-      url = "github:oxalica/nil";
+    nvf = {
+      url = "github:NotAShelf/nvf";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
         flake-utils.follows = "flake-utils";
+        systems.url = "systems";
       };
     };
   };
@@ -35,6 +27,7 @@
   outputs = {
     self,
     flake-parts,
+    nvf,
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -45,20 +38,6 @@
         "aarch64-darwin"
       ];
 
-      imports = [
-        inputs.nixvim.flakeModules.default
-      ];
-
-      nixvim = {
-        packages.enable = true;
-        checks.enable = true;
-      };
-
-      flake.nixvimModules = {
-        default = ./config;
-        windsurf = ./config/plugins/cmp/windsurf.nix;
-      };
-
       perSystem = {
         system,
         pkgs,
@@ -66,24 +45,15 @@
       }: {
         formatter = pkgs.alejandra;
 
-        nixvimConfigurations = let
-          mkNikSVimConfig = modules:
-            inputs.nixvim.lib.evalNixvim {
-              inherit system modules;
-              extraSpecialArgs = {
-                inherit inputs self;
-              };
-            };
-        in
-          with self.nixvimModules; {
-            default = mkNikSVimConfig [
-              default
-            ];
-            with-codeium = mkNikSVimConfig [
-              default
-              windsurf
-            ];
-          };
+        packages = let
+          inherit (nvf.lib) neovimConfiguration;
+        in {
+          default =
+            (neovimConfiguration {
+              inherit pkgs;
+              modules = [(import ./modules)];
+            }).neovim;
+        };
       };
     };
 }

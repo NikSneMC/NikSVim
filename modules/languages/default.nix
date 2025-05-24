@@ -1,0 +1,27 @@
+{
+  imports = [
+    ./assembly.nix
+    ./astro.nix
+    ./bash.nix
+    ./clang.nix
+    ./css.nix
+    ./elixir.nix
+    ./go.nix
+    ./haskell.nix
+    ./helm.nix
+    ./html.nix
+    ./java.nix
+    ./kotlin.nix
+    ./lua.nix
+    ./markdown.nix
+    ./nix.nix
+    ./python.nix
+    ./rust.nix
+    ./sql.nix
+    ./svelte.nix
+    ./tailwind.nix
+    ./ts.nix
+    ./yaml.nix
+    ./zig.nix
+  ];
+}
