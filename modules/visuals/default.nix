@@ -1,7 +1,6 @@
 {
   imports = [
     ./indent-blankline.nix
-    ./nvim-scrollbar.nix
   ];
 
   vim.visuals = {
