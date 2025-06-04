@@ -24,6 +24,7 @@
     ./presence.nix
     ./projects.nix
     ./runner.nix
+    ./session.nix
     ./snippets.nix
     ./spellcheck.nix
     ./statusline.nix
