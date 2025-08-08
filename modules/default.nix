@@ -26,7 +26,7 @@
     ./runner.nix
     ./session.nix
     ./snippets.nix
-    ./spellcheck.nix
+    # ./spellcheck.nix
     ./statusline.nix
     ./tabline.nix
     ./telescope.nix
