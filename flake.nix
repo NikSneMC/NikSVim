@@ -2,6 +2,8 @@
   description = "NikSne's nvf configuration";
 
   inputs = {
+    systems.url = "github:nix-systems/default";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     flake-parts = {
@@ -9,20 +11,35 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    flake-compat = {
+      url = "git+https://git.lix.systems/lix-project/flake-compat.git";
+      flake = false;
+    };
+
+    # Alternate neovim-wrapper
+    mnw.url = "github:Gerg-L/mnw";
+
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs = {
+        systems.follows = "systems";
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        flake-compat.follows = "flake-compat";
+        mnw.follows = "mnw";
+      };
+    };
+
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
 
-    systems.url = "github:nix-systems/default";
-
-    nvf = {
-      url = "github:NotAShelf/nvf";
+    deadnix = {
+      url = "github:astro/deadnix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        flake-utils.follows = "flake-utils";
-        systems.follows = "systems";
+        utils.follows = "flake-utils";
       };
     };
   };
@@ -41,11 +58,7 @@
         "aarch64-darwin"
       ];
 
-      perSystem = {
-        system,
-        pkgs,
-        ...
-      }: {
+      perSystem = {pkgs, ...}: {
         formatter = pkgs.alejandra;
 
         packages = let
@@ -54,6 +67,10 @@
           default =
             (neovimConfiguration {
               inherit pkgs;
+              extraSpecialArgs = {
+                inherit self;
+                inputs' = inputs;
+              };
               modules = [(import ./modules)];
             }).neovim;
         };
