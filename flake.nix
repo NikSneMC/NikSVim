@@ -20,7 +20,7 @@
     mnw.url = "github:Gerg-L/mnw";
 
     nvf = {
-      url = "/home/niksne/Projects/github/NikSneMC/nvf";
+      url = "github:NikSneMC/nvf/feat/angular-support";
       inputs = {
         systems.follows = "systems";
         nixpkgs.follows = "nixpkgs";
