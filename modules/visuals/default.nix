@@ -1,7 +1,6 @@
 {
   imports = [
     ./indent-blankline.nix
-    ./cinnamon-nvim.nix
   ];
 
   vim.visuals = {

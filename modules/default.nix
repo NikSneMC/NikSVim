@@ -1,6 +1,7 @@
 {
   imports = [
     ./git
+    ./keymaps
     ./languages
     ./ui
     ./utility
@@ -26,6 +27,7 @@
     ./statusline.nix
     ./tabline.nix
     ./telescope.nix
+    ./terminal.nix
     ./theme.nix
     ./treesitter.nix
   ];
