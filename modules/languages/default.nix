@@ -1,5 +1,6 @@
 {
   imports = [
+    ./angular.nix
     ./assembly.nix
     ./astro.nix
     ./bash.nix
