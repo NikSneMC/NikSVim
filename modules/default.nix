@@ -1,6 +1,6 @@
 {
   imports = [
-    ./keymaps
+    ./git
     ./languages
     ./ui
     ./utility
@@ -16,21 +16,16 @@
     ./filetree.nix
     ./formatter.nix
     ./fzf-lua.nix
-    ./git.nix
     ./lsp.nix
-    ./navigation.nix
     ./notes.nix
     ./notify.nix
     ./presence.nix
     ./projects.nix
-    ./runner.nix
     ./session.nix
     ./snippets.nix
-    # ./spellcheck.nix
     ./statusline.nix
     ./tabline.nix
     ./telescope.nix
-    ./terminal.nix
     ./theme.nix
     ./treesitter.nix
   ];

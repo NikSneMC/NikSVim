@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "deadnix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "flake-utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757007590,
+        "narHash": "sha256-JXjjLhMqvY1u2cUO62gDYO0yWNDJ01mkk15yBUSbhhQ=",
+        "owner": "astro",
+        "repo": "deadnix",
+        "rev": "6e929079cf636548beb3fa9bffd1df63234fcc6b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "astro",
+        "repo": "deadnix",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -33,6 +56,26 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     },
@@ -86,23 +129,22 @@
         ]
       },
       "locked": {
-        "lastModified": 1754552918,
-        "narHash": "sha256-vbT+nGdMLNAeYZ1S5WBBLJTVWosGne2VRt46rqPfB2A=",
-        "owner": "NotAShelf",
-        "repo": "nvf",
-        "rev": "d61de135ce174f4e04b4e509de02e1afe040a834",
-        "type": "github"
+        "lastModified": 1757150944,
+        "narHash": "sha256-HJfBVpph/01E/5aSmcgSWtY3Zzu2ef8X4DKQz62guGs=",
+        "path": "/home/niksne/Projects/github/NikSneMC/nvf",
+        "type": "path"
       },
       "original": {
-        "owner": "NotAShelf",
-        "repo": "nvf",
-        "type": "github"
+        "path": "/home/niksne/Projects/github/NikSneMC/nvf",
+        "type": "path"
       }
     },
     "root": {
       "inputs": {
+        "deadnix": "deadnix",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
+        "flake-utils": "flake-utils",
         "mnw": "mnw",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",

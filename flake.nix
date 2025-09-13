@@ -20,7 +20,7 @@
     mnw.url = "github:Gerg-L/mnw";
 
     nvf = {
-      url = "github:NotAShelf/nvf";
+      url = "/home/niksne/Projects/github/NikSneMC/nvf";
       inputs = {
         systems.follows = "systems";
         nixpkgs.follows = "nixpkgs";

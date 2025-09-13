@@ -2,7 +2,6 @@
   imports = [
     ./images.nix
     ./motion.nix
-    ./outline.nix
     ./preview.nix
   ];
 

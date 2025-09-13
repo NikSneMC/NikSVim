@@ -1,8 +1,5 @@
 {
   vim.utility.preview = {
-    markdownPreview = {
-      enable = true;
-      autoStart = true;
-    };
+    markdownPreview.enable = true;
   };
 }
