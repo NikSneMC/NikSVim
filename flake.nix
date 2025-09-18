@@ -50,7 +50,21 @@
     nvf,
     ...
   } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+    flake-parts.lib.mkFlake {inherit inputs;} (let
+      lib = let
+        inherit (nvf.lib) neovimConfiguration;
+      in {
+        niksvimConfiguration = pkgs: config:
+          (neovimConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = {
+              inherit self;
+              inputs' = inputs;
+            };
+            modules = [(import ./modules) config];
+          }).neovim;
+      };
+    in {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -58,22 +72,14 @@
         "aarch64-darwin"
       ];
 
+      flake = {
+        inherit lib;
+      };
+
       perSystem = {pkgs, ...}: {
         formatter = pkgs.alejandra;
 
-        packages = let
-          inherit (nvf.lib) neovimConfiguration;
-        in {
-          default =
-            (neovimConfiguration {
-              inherit pkgs;
-              extraSpecialArgs = {
-                inherit self;
-                inputs' = inputs;
-              };
-              modules = [(import ./modules)];
-            }).neovim;
-        };
+        packages.default = lib.niksvimConfiguration pkgs {};
       };
-    };
+    });
 }
